@@ -10,7 +10,7 @@ public class Produto {
     int quantidadevendida;
     static List <Produto> estoque = new ArrayList<>();
 
-    /*Guardar a informação dos itens do estoque da cantina (nome, descrição, preço decompra, preço devendae
+    /*Guardar a informação dos itens do estoque da cantina (nome, descrição, preçodecompra, preçodevenda,
     quantidadecomprada, quantidadevendida)*/
     Produto(String nome, String descricao, double precodecompra, double precodevenda, int quantidadecomprada, int quantidadevendida){
         this.nome = nome;
