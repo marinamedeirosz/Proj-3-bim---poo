@@ -8,7 +8,7 @@ import DTO.ProdutoDTO;
 import java.awt.*;
 import java.awt.event.*;
 
-public class frmProdutoVIEW extends JFrame {
+public class frmCadastroProdutoVIEW extends JFrame {
     private JLabel lblNomeProduto;
     private JTextField txtNomeProduto;
     private JLabel lblPrecoDeCompra;
@@ -24,7 +24,7 @@ public class frmProdutoVIEW extends JFrame {
     private JButton btnCadastrar;
     private JButton btnCancelar;
     private Container ctn;
-    public frmProdutoVIEW() {
+    public frmCadastroProdutoVIEW() {
         setSize(400, 500);
         setTitle("Sistema de cadastro");
         ctn = getContentPane();
@@ -68,8 +68,8 @@ public class frmProdutoVIEW extends JFrame {
         txtDescricao.setBounds(10, 190, 200, 20);
         lblCodProd.setBounds(10, 210, 100, 20);
         txtCodProd.setBounds(10, 230, 200, 20);
-        btnCadastrar.setBounds(10, 270, 100, 20);
-        btnCancelar.setBounds(120, 270, 100, 20);
+        btnCadastrar.setBounds(120, 270, 100, 20);
+        btnCancelar.setBounds(10, 270, 100, 20);
         ctn.add(lblNomeProduto);
         ctn.add(txtNomeProduto);
         ctn.add(lblPrecoDeCompra);
@@ -96,22 +96,26 @@ public class frmProdutoVIEW extends JFrame {
         int quantidadecomprada;
         int quantidadevendida;
         int codprod;
-        nome = txtNomeProduto.getText();
-        descricao = txtDescricao.getText();
-        precodecompra = Double.parseDouble(txtPrecoDeCompra.getText());
-        precodevenda = Double.parseDouble(txtPrecoDeVenda.getText());
-        quantidadecomprada = Integer.parseInt(txtQuantidade.getText());
-        quantidadevendida = Integer.parseInt(txtQuantidade.getText());
-        codprod = Integer.parseInt(txtCodProd.getText());
-        ProdutoDTO objprodutodto = new ProdutoDTO(nome, descricao, precodecompra, precodevenda, quantidadecomprada, quantidadevendida, codprod);
-        ProdutoDAO objprodutodao = new ProdutoDAO();
-        objprodutodao.cadastrarProduto(objprodutodto);
+        try{
+            nome = txtNomeProduto.getText();
+            descricao = txtDescricao.getText();
+            precodecompra = Double.parseDouble(txtPrecoDeCompra.getText());
+            precodevenda = Double.parseDouble(txtPrecoDeVenda.getText());
+            quantidadecomprada = Integer.parseInt(txtQuantidade.getText());
+            quantidadevendida = Integer.parseInt(txtQuantidade.getText());
+            codprod = Integer.parseInt(txtCodProd.getText());
+            ProdutoDTO objprodutodto = new ProdutoDTO(nome, descricao, precodecompra, precodevenda, quantidadecomprada, quantidadevendida, codprod);
+            ProdutoDAO objprodutodao = new ProdutoDAO();
+            objprodutodao.cadastrarProduto(objprodutodto);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto" + "\n" + e.getMessage());
+        }
     }
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                         
         dispose();
     }
 
     public static void main(String[] args) {
-        new frmProdutoVIEW();
+        new frmCadastroProdutoVIEW();
     }
 }

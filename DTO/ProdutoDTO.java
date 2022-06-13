@@ -19,6 +19,9 @@ public class ProdutoDTO {
         this.codprod = codprod;
     }
 
+    public ProdutoDTO() {
+    }
+
     public String getNome() {
         return nome;
     }
